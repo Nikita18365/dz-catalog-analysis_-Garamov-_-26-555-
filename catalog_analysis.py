@@ -65,20 +65,20 @@ def decade_label(year):
 
 # Этап 3. Циклы
 
-for movie in movies:
-    if "comedy" in movie["genres"]:
-        continue
-    print(movie["title"])
+#for movie in movies:
+#    if "comedy" in movie["genres"]:
+#        continue
+#    print(movie["title"])
 
-index = 0
-while index < len(movies):
-    movie = movies[index]
-    if movie["rating"] > 9.0:
-        print(movie["title"])
-        break
-    index += 1
-else:
-    print("Шедевров не найдено")
+#index = 0
+#while index < len(movies):
+#    movie = movies[index]
+#    if movie["rating"] > 9.0:
+#        print(movie["title"])
+#        break
+#    index += 1
+#else:
+#    print("Шедевров не найдено")
 
 def count_long_movies(movies, threshold = 120):
     count = 0
@@ -177,14 +177,14 @@ def iter_high_rated(movies, min_rating = 8.0):
         if movie["rating"] >= min_rating:
             yield movie
 
-for movie in iter_high_rated(movies):
-    print(format_report_line(movie))
+#for movie in iter_high_rated(movies):
+#    print(format_report_line(movie))
 
 total_duration = sum(movie["duration_min"]
 			for movie in movies
 			if movie["rating"] > 7
 			)
-print(total_duration)
+#print(total_duration)
 
 # Этап 9. Итоговый отчет
 
