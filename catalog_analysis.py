@@ -87,6 +87,8 @@ def count_long_movies(movies, threshold = 120):
             count += 1
     return count
 
+# Этап 4. Строки
+
 def normalize_title(title):
     words = title.split()
     normalized_words = []
@@ -108,6 +110,8 @@ def format_report_line(movie):
             f"{duration}, жанры: {genres}"
            )
 
+# Этап 5. Списки
+
 def titles_sorted_by_rating(movies):
     sorted_movies = sorted(movies,
 			key = lambda movie: movie["rating"],
@@ -121,3 +125,43 @@ def top_n_by_rating(movies, n = 3):
 			reverse = True,
 			)
     return [(movie["title"], movie["rating"]) for movie in sorted_movies[:n]]
+
+# Этап 6. Словари
+
+def count_by_genre(movies):
+    genre_counts = {}
+    for movie in movies:
+        for genre in movie["genres"]:
+		#Если жанра нет, ставим 0 
+            genre_counts[genre] = genre_counts.get(genre, 0) + 1
+    return genre_counts
+
+def actor_filmography(movies):
+    filmography = {}
+    for movie in movies:
+        for actor in movie["actors"]:
+            if actor not in filmography:
+                filmography[actor] = []
+            filmography[actor].append(movie["title"])
+    return filmography
+
+average = average_rating(movies)
+above_average_ratings = {
+			movie["title"]: movie["rating"]
+			for movie in movies
+			if movie["rating"] > average
+			}
+
+# Этап 7. Множества
+
+
+
+# Этап 8. Итераторы и генераторы
+
+
+
+
+# Этап 9. Итоговый отчет
+
+
+
