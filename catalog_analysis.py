@@ -188,5 +188,38 @@ print(total_duration)
 
 # Этап 9. Итоговый отчет
 
+def build_report(movies):
+    average = average_rating(movies)
+    _, _, average_age = catalog_age_stats(movies)
 
+    print("Отчёт по каталогу")
+    print(f"Средний рейтинг: {average}")
+    print(f"Средний возраст фильмов: {average_age} лет")
+    print()
 
+    print("Топ-3 фильма:")
+    top_movies = top_n_by_rating(movies, 3)
+
+    for title, _ in top_movies:
+        for movie in movies:
+            if movie["title"] == title:
+                print(f"  {format_report_line(movie)}")
+                break
+
+    print()
+    print("Фильмов по жанрам:")
+
+    genre_counts = count_by_genre(movies)
+    sorted_genres = sorted(genre_counts.items(),
+				key = lambda item: item[1],
+				reverse = True,
+				)
+
+    for genre, count in sorted_genres:
+        print(f"  {genre} - {count}")
+
+    print()
+    genres = sorted(all_genres(movies))
+    print(f"Все жанры каталога: {', '.join(genres)}")
+
+build_report(movies)
