@@ -222,4 +222,5 @@ def build_report(movies):
     genres = sorted(all_genres(movies))
     print(f"Все жанры каталога: {', '.join(genres)}")
 
-build_report(movies)
+if __name__ == "__main__":
+    build_report(movies)
